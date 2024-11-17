@@ -1,0 +1,26 @@
+parameters:
+    google_api_key: ' AIzaSyDgULPDv2mU8K_HA9xU4jzXisqe8hVfiWQ'
+    google_search_engine_id: '4459932cf0df2462d'
+    b_api_key: 'd253aeba1fbf48348623c0c29818f017'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Service\GoogleSearchEngine:
+        arguments:
+            $apiKey: '%google_api_key%'
+            $searchEngineId: '%google_search_engine_id%'
+    App\Service\BingSearchEngine:
+        arguments:
+            $apiKey: '%b_api_key%'
+
+    
